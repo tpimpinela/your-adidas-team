@@ -1,0 +1,11 @@
+// Global styles
+
+@import "./styles/_colors.css";
+@import "./styles/_fonts.css";
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Raleway, Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,18 @@
+// Vitest Snapshot v1
+
+exports[`<Header /> > should match the snapshot 1`] = `
+<div>
+  <header
+    class="_header_63c2ea"
+  >
+    <h1>
+      Your
+      <img
+        class="_header__logo_63c2ea"
+        src="/src/assets/adidas-logo.png"
+      />
+      team
+    </h1>
+  </header>
+</div>
+`;

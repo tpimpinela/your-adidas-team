@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
+    restoreMocks: true,
   },
   css: {
     postcss: {

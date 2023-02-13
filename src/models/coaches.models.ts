@@ -28,7 +28,7 @@ interface Birth {
 }
 
 interface Career {
-  team: Team;
+  team: TeamMapped;
   start: Date;
   end: Date | null;
 }

@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`<Team /> > should match the snapshopt 1`] = `
+<div>
+  <div
+    class="_team_953c9b"
+    data-testid="team"
+  >
+    <img
+      alt="Logo of Test team mapped team"
+      class="_team__logo_953c9b"
+      src="http://test.com/logo.png"
+    />
+    <span>
+      Test team mapped
+    </span>
+  </div>
+</div>
+`;

@@ -4,6 +4,7 @@ exports[`<TeamMember /> > if teamMember is a coach > should match the snapshot 1
 <div>
   <div
     class="_team-member_30838e"
+    data-testid="team-member"
   >
     <img
       alt="Photo of Luis Enrique"
@@ -32,6 +33,7 @@ exports[`<TeamMember /> > if teamMember is a player > should match the snapshot 
 <div>
   <div
     class="_team-member_30838e"
+    data-testid="team-member"
   >
     <img
       alt="Photo of Robert Lynch Sánchez"

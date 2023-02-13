@@ -15,11 +15,31 @@ exports[`<PlayerSelection /> > should match the snapshot 1`] = `
     >
       TeamMember
     </h1>
+    <button
+      data-testid="click-true"
+    >
+      Click me
+    </button>
+    <button
+      data-testid="click-false"
+    >
+      Click me
+    </button>
     <h1
       data-testid="team-member"
     >
       TeamMember
     </h1>
+    <button
+      data-testid="click-true"
+    >
+      Click me
+    </button>
+    <button
+      data-testid="click-false"
+    >
+      Click me
+    </button>
   </div>
 </div>
 `;

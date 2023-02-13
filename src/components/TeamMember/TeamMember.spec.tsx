@@ -1,15 +1,23 @@
 import { cleanup, render, RenderResult } from "@testing-library/react";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, Mocked, vi } from "vitest";
 import TeamMember from ".";
 import coachMock from "../../mocks/coach.mock";
 import squadMock from "../../mocks/squads.mock";
+import userEvent from "@testing-library/user-event";
 
 describe("<TeamMember />", () => {
   let renderResult: RenderResult;
   const playerMock = squadMock.players[0];
+  let onTeamMemberClickedMock: Mocked<any>;
 
   beforeEach(() => {
-    renderResult = render(<TeamMember teamMember={playerMock} />);
+    onTeamMemberClickedMock = vi.fn();
+    renderResult = render(
+      <TeamMember
+        teamMember={playerMock}
+        onTeamMemberClicked={onTeamMemberClickedMock}
+      />
+    );
   });
 
   it("should show teamMember name", () => {
@@ -50,5 +58,14 @@ describe("<TeamMember />", () => {
     it("shoud show coach literal", () => {
       expect(renderResult.getByText("COACH")).toBeTruthy();
     });
+  });
+
+  it("should call onTeamMemberClicked prop function if the member is clicked", async () => {
+    await userEvent.click(renderResult.getByTestId("team-member"));
+    expect(onTeamMemberClickedMock).toHaveBeenNthCalledWith(
+      1,
+      playerMock,
+      false
+    );
   });
 });

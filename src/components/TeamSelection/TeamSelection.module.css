@@ -6,6 +6,7 @@
   transition: transform 0.4s;
   transform: translateX(85%);
   border-left: 1px solid var(--accent-color);
+  z-index: 1;
 
   &.team-list-container--opened {
     transform: unset;

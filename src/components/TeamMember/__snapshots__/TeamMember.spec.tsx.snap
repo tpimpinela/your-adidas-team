@@ -1,0 +1,57 @@
+// Vitest Snapshot v1
+
+exports[`<TeamMember /> > if teamMember is a coach > should match the snapshot 1`] = `
+<div>
+  <div
+    class="_team-member_30838e"
+  >
+    <img
+      alt="Photo of Luis Enrique"
+      class="_team-member__image_30838e"
+      src="https://media-3.api-sports.io/football/coachs/193.png"
+    />
+    <div
+      class="_team-member__info_30838e"
+    >
+      <span
+        class="_name_30838e"
+      >
+        Luis Enrique
+      </span>
+      <span
+        class="_position_30838e"
+      >
+        COACH
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TeamMember /> > if teamMember is a player > should match the snapshot 1`] = `
+<div>
+  <div
+    class="_team-member_30838e"
+  >
+    <img
+      alt="Photo of Robert Lynch Sánchez"
+      class="_team-member__image_30838e"
+      src="https://media.api-sports.io/football/players/18959.png"
+    />
+    <div
+      class="_team-member__info_30838e"
+    >
+      <span
+        class="_name_30838e"
+      >
+        Robert Lynch Sánchez
+      </span>
+      <span
+        class="_position_30838e"
+      >
+        Goalkeeper
+      </span>
+    </div>
+  </div>
+</div>
+`;

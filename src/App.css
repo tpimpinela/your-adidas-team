@@ -9,3 +9,10 @@ body {
   color: var(--text-color);
   font-family: Raleway, Helvetica, Arial, sans-serif;
 }
+
+main {
+  max-width: 85%;
+  margin: auto;
+  padding: 0.5rem;
+  padding-bottom: 2rem;
+}

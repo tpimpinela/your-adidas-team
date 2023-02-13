@@ -30,6 +30,7 @@ const useFetchPlayers = (teamId: number) => {
 
   return {
     players: mappedPlayers,
+    teamName: data?.response[0].team.name,
     isLoading,
   };
 };

@@ -29,10 +29,11 @@ describe("useFetchPlayers", () => {
     });
   });
 
-  it("should return mapped players and isLoading", () => {
+  it("should return mapped players, isLoading and teamName", () => {
     const { id, photo, name, number, position } = squadMock.players[0];
     expect(renderHookResult.result.current).toStrictEqual({
       isLoading: false,
+      teamName: squadMock.team.name,
       players: [
         {
           id,

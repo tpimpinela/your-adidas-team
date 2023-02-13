@@ -1,0 +1,12 @@
+.player-selection-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.team-name {
+  display: grid;
+  place-items: center;
+  color: white;
+  margin-bottom: 2rem;
+}

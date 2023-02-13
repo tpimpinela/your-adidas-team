@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`<PlayerSelection /> > should match the snapshot 1`] = `
+<div>
+  <h2
+    class="_team-name_e89e23"
+  >
+    Spain
+  </h2>
+  <div
+    class="_player-selection-container_e89e23"
+  >
+    <h1
+      data-testid="team-member"
+    >
+      TeamMember
+    </h1>
+    <h1
+      data-testid="team-member"
+    >
+      TeamMember
+    </h1>
+  </div>
+</div>
+`;

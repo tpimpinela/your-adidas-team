@@ -2,6 +2,7 @@ import { renderHook, RenderHookResult } from "@testing-library/react";
 import { useContext } from "react";
 import { beforeEach, describe, expect, Mock, vi, it } from "vitest";
 import { MyOwnSquadContext } from "../contexts/MyOwnSquad.context";
+import squadMock from "../mocks/squads.mock";
 import { TeamMember } from "../models/teamMember.model";
 import useMyOwnSquad from "./useMyOwnSquad";
 
@@ -25,6 +26,26 @@ describe("useMyOwnSquad", () => {
 
   it("should return myOwnSquad context", () => {
     expect(useContext).toHaveBeenNthCalledWith(1, MyOwnSquadContext);
-    expect(renderHookResult.result.current).toBe(myOwnSquadMock);
+    expect(renderHookResult.result.current.squad).toBe(myOwnSquadMock);
+  });
+
+  describe("a function to check if a member is already included in the squad", () => {
+    it("should return it", () => {
+      expect(renderHookResult.result.current.isMemberOnMySquad).toBeTypeOf(
+        "function"
+      );
+    });
+
+    it("should return true if the member is already in the squad", () => {
+      useContextMock.mockReturnValue([squadMock.players[0]]);
+      renderHookResult.rerender();
+      const { isMemberOnMySquad } = renderHookResult.result.current;
+      expect(isMemberOnMySquad(squadMock.players[0].id)).toBeTruthy();
+    });
+
+    it("should return false if the member is not included in the squad", () => {
+      const { isMemberOnMySquad } = renderHookResult.result.current;
+      expect(isMemberOnMySquad(squadMock.players[0].id)).toBeFalsy();
+    });
   });
 });

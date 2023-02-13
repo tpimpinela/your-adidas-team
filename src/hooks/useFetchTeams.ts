@@ -1,4 +1,5 @@
-import { FootbalTeamsApiResponse } from "../models/teams.models";
+import { useMemo } from "react";
+import { FootbalTeamsApiResponse, TeamMapped } from "../models/teams.models";
 import { API_ENDPOINTS, LEAGUE, SEASON } from "../utils/config";
 import useFetch from "./useFetch";
 
@@ -11,8 +12,18 @@ const useFetchTeams = () => {
     }
   );
 
+  const mappedTeams: TeamMapped[] = useMemo(() => {
+    return (
+      data?.response.map(({ team: { id, name, logo } }) => ({
+        id,
+        name,
+        logo,
+      })) ?? []
+    );
+  }, [data]);
+
   return {
-    teams: data?.response,
+    teams: mappedTeams,
     isLoading,
   };
 };

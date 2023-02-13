@@ -1,5 +1,6 @@
 import { renderHook, RenderHookResult } from "@testing-library/react";
 import { beforeEach, describe, expect, vi, it } from "vitest";
+import teamInfoMock from "../mocks/teamInfo.mock";
 import { API_ENDPOINTS, LEAGUE, SEASON } from "../utils/config";
 import useFetch from "./useFetch";
 import useFetchTeams from "./useFetchTeams";
@@ -7,7 +8,7 @@ import useFetchTeams from "./useFetchTeams";
 vi.mock("./useFetch", () => ({
   default: vi.fn().mockReturnValue({
     isLoading: false,
-    data: { response: [] },
+    data: { response: [teamInfoMock] },
   }),
 }));
 
@@ -25,10 +26,16 @@ describe("useFetchTeams", () => {
     });
   });
 
-  it("should return correct result", () => {
+  it("should return mapped teams and isLoading", () => {
     expect(renderHookResult.result.current).toStrictEqual({
       isLoading: false,
-      teams: [],
+      teams: [
+        {
+          id: teamInfoMock.team.id,
+          name: teamInfoMock.team.name,
+          logo: teamInfoMock.team.logo,
+        },
+      ],
     });
   });
 });

@@ -4,6 +4,12 @@ export const API_ENDPOINTS = {
   get teams() {
     return `${this.baseUrl}/teams`;
   },
+  get squads() {
+    return `${this.baseUrl}/players/squads`;
+  },
+  get coaches() {
+    return `${this.baseUrl}/coachs`;
+  },
 };
 export const LEAGUE = 1;
 export const SEASON = 2022;

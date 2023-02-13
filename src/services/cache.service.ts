@@ -35,6 +35,7 @@ export const getCachedData = <T>(fullEndpoint: string) => {
   const allCachedData = getAllCachedData();
   if (!allCachedData) return;
   const cachedDataForThisEndpoint = allCachedData[fullEndpoint];
+  if (!cachedDataForThisEndpoint) return;
   if (!isCachedDataValid(cachedDataForThisEndpoint)) {
     deleteCachedData(fullEndpoint);
     return;

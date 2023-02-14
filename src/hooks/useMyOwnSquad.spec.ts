@@ -1,9 +1,12 @@
-import { renderHook, RenderHookResult } from "@testing-library/react";
+import { renderHook, RenderHookResult, waitFor } from "@testing-library/react";
 import { useContext } from "react";
 import { beforeEach, describe, expect, Mock, vi, it } from "vitest";
 import { MyOwnSquadContext } from "../contexts/MyOwnSquad.context";
+import getValidations from "../helpers/getValidations.helper";
+import getValidationMessage from "../helpers/getValidationsMessage.helper";
 import squadMock from "../mocks/squads.mock";
 import { TeamMember } from "../models/teamMember.model";
+import { SquadValidation } from "../models/validation.model";
 import useMyOwnSquad from "./useMyOwnSquad";
 
 vi.mock("react", async () => {
@@ -13,7 +16,6 @@ vi.mock("react", async () => {
     useContext: vi.fn(),
   };
 });
-
 describe("useMyOwnSquad", () => {
   let renderHookResult: RenderHookResult<ReturnType<typeof useMyOwnSquad>, any>;
   const useContextMock = useContext as Mock<any, any>;
@@ -47,5 +49,13 @@ describe("useMyOwnSquad", () => {
       const { isMemberOnMySquad } = renderHookResult.result.current;
       expect(isMemberOnMySquad(squadMock.players[0].id)).toBeFalsy();
     });
+  });
+
+  it("should return validations", () => {
+    expect(renderHookResult.result.current.validations).toBeTruthy();
+  });
+
+  it("should return validationsMessage", () => {
+    expect(renderHookResult.result.current.validationsMessage).toBeTruthy();
   });
 });

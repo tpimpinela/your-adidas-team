@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { LoaderDispatchContext } from "../contexts/Loader.context";
 import addQueryParams from "../helpers/addQueryParams.helper";
 import { FootballAPIResponse } from "../models/footballApiResponse.model";
 import { QueryParams } from "../models/queryParams.model";
@@ -20,6 +21,7 @@ const useFetch = <T extends FootballAPIResponse<any>>(
   headers?: RequestInit["headers"]
 ) => {
   const [isLoading, setIsLoading] = useState(true);
+  const loaderDispatcher = useContext(LoaderDispatchContext);
   const [data, setData] = useState<T>();
   const endpointWithParams = useMemo(
     () => addQueryParams(endpoint, queryParams),
@@ -44,6 +46,7 @@ const useFetch = <T extends FootballAPIResponse<any>>(
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
+      loaderDispatcher(true);
       let data: T;
       if (cache) {
         data = cache as T;
@@ -56,6 +59,7 @@ const useFetch = <T extends FootballAPIResponse<any>>(
       setData(data);
       saveCache(data);
       setIsLoading(false);
+      loaderDispatcher(false);
       return data;
     }
     fetchData();

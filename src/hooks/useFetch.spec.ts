@@ -16,7 +16,13 @@ vi.mock("../services/cache.service", () => ({
   getCachedData: vi.fn(),
   setCacheData: vi.fn(),
 }));
-
+vi.mock("react", async () => {
+  const actual: object = await vi.importActual("react");
+  return {
+    ...actual,
+    useContext: vi.fn().mockReturnValue(vi.fn()),
+  };
+});
 describe("useFetch", () => {
   let renderHookResult: RenderHookResult<ReturnType<typeof useFetch>, any>;
   const endpointMock = "http://fake-endpoint.com";

@@ -8,6 +8,10 @@
   border-left: 1px solid var(--accent-color);
   z-index: 1;
 
+  &:not(.team-list-container--opened) .team-list {
+    pointer-events: none;
+  }
+
   &.team-list-container--opened {
     transform: unset;
     animation: appear 0.4s ease-out;

@@ -1,9 +1,14 @@
 .validation {
-  width: 100%;
   text-align: center;
+  background-color: var(--second-background-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-sizing: border-box;
 
   & .validation__header {
     color: var(--accent-color);
+    margin-top: 0;
     font-size: 1.5rem;
   }
 

@@ -1,6 +1,7 @@
 import { renderHook, RenderHookResult } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import coachMock from "../mocks/coach.mock";
+import { PlayerPosition } from "../models/squads.models";
 import { API_ENDPOINTS } from "../utils/config";
 import useFetch from "./useFetch";
 import useFetchCoaches from "./useFetchCoaches";
@@ -34,7 +35,16 @@ describe("useFetchCoaches", () => {
     expect(renderHookResult.result.current).toStrictEqual({
       isLoading: false,
       coaches: [
-        { id, name, age, photo, firstname, lastname, teamId: teamIdMock },
+        {
+          id,
+          name,
+          age,
+          photo,
+          firstname,
+          lastname,
+          teamId: teamIdMock,
+          position: PlayerPosition.Coach,
+        },
       ],
     });
   });

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { FootbalCoachesApiResponse } from "../models/coaches.models";
+import { PlayerPosition } from "../models/squads.models";
 import { API_ENDPOINTS } from "../utils/config";
 import useFetch from "./useFetch";
 
@@ -21,6 +22,7 @@ const useFetchCoaches = (teamId: number) => {
         photo,
         age,
         teamId,
+        position: PlayerPosition.Coach,
       })
     );
   }, [data]);

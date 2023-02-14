@@ -4,10 +4,11 @@ import TeamMember from ".";
 import coachMock from "../../mocks/coach.mock";
 import squadMock from "../../mocks/squads.mock";
 import userEvent from "@testing-library/user-event";
+import { PlayerMapped, PlayerPosition } from "../../models/squads.models";
 
 describe("<TeamMember />", () => {
   let renderResult: RenderResult;
-  const playerMock = squadMock.players[0];
+  const playerMock = squadMock.players[0] as unknown as PlayerMapped;
   let onTeamMemberClickedMock: Mocked<any>;
 
   beforeEach(() => {
@@ -48,7 +49,15 @@ describe("<TeamMember />", () => {
   describe("if teamMember is a coach", () => {
     beforeEach(() => {
       cleanup();
-      renderResult = render(<TeamMember teamMember={coachMock} />);
+      renderResult = render(
+        <TeamMember
+          teamMember={{
+            ...coachMock,
+            teamId: 9,
+            position: PlayerPosition.Coach,
+          }}
+        />
+      );
     });
 
     it("should match the snapshot", () => {
@@ -56,7 +65,7 @@ describe("<TeamMember />", () => {
     });
 
     it("shoud show coach literal", () => {
-      expect(renderResult.getByText("COACH")).toBeTruthy();
+      expect(renderResult.getByText("Coach")).toBeTruthy();
     });
   });
 

@@ -1,4 +1,5 @@
 import { FootballAPIResponse } from "./footballApiResponse.model";
+import { PlayerPosition } from "./squads.models";
 import { TeamMapped } from "./teams.models";
 
 export interface Coach {
@@ -19,7 +20,7 @@ export interface Coach {
 export type CoachMapped = Pick<
   Coach,
   "id" | "name" | "age" | "photo" | "firstname" | "lastname"
-> & { teamId: number };
+> & { teamId: number; position: PlayerPosition.Coach };
 
 interface Birth {
   date: Date;

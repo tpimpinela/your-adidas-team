@@ -25,6 +25,7 @@ export enum PlayerPosition {
   Defender = "Defender",
   Goalkeeper = "Goalkeeper",
   Midfielder = "Midfielder",
+  Coach = "Coach",
 }
 
 export type FootbalSquadsApiResponse = FootballAPIResponse<Squad>;

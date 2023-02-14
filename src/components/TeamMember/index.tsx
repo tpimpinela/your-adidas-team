@@ -31,9 +31,7 @@ const TeamMember = ({ teamMember, onTeamMemberClicked }: Props) => {
       />
       <div className={styles["team-member__info"]}>
         <span className={styles.name}>{teamMember.name}</span>
-        <span className={styles.position}>
-          {"position" in teamMember ? teamMember.position : "COACH"}
-        </span>
+        <span className={styles.position}>{teamMember.position}</span>
       </div>
       {isMemberOnMySquad && <span className={styles["included-mark"]}>✓</span>}
     </div>

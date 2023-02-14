@@ -22,7 +22,7 @@ exports[`<TeamMember /> > if teamMember is a coach > should match the snapshot 1
       <span
         class="_position_30838e"
       >
-        COACH
+        Coach
       </span>
     </div>
   </div>

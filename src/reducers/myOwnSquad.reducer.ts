@@ -8,6 +8,7 @@ export interface MyOwnSquadAction {
 export enum MyOwnSquadActionType {
   Add,
   Delete,
+  Set,
 }
 
 export const myOwnSquadReducer = (
@@ -19,5 +20,7 @@ export const myOwnSquadReducer = (
       return [...myOwnSquad, action.payload];
     case MyOwnSquadActionType.Delete:
       return [...myOwnSquad].filter((member) => member.id !== action.payload);
+    case MyOwnSquadActionType.Set:
+      return [...action.payload];
   }
 };

@@ -28,4 +28,13 @@ describe("myOwnSquadReducer", () => {
     const result = myOwnSquadReducer([squadMock.players[0]], action);
     expect(result.length).toBe(0);
   });
+
+  it("should set the whole squad", () => {
+    const newSquadMock = [squadMock.players[0]];
+    const action: MyOwnSquadAction = {
+      type: MyOwnSquadActionType.Set,
+      payload: newSquadMock,
+    };
+    expect(myOwnSquadReducer([], action)).toStrictEqual(newSquadMock);
+  });
 });

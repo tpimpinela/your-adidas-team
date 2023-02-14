@@ -1,20 +1,35 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import MyOwnSquadViewer from "./components/MyOwnSquadViewer";
-import PlayerSelection from "./components/PlayerSelection";
-import SquadCreator from "./components/SquadCreator";
+import LoaderSuspense from "./components/LoaderSuspense";
+
+const MyOwnSquadViewer = lazy(() => import("./components/MyOwnSquadViewer"));
+const SquadCreator = lazy(() => import("./components/SquadCreator"));
+const PlayerSelection = lazy(() => import("./components/PlayerSelection"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MyOwnSquadViewer />,
+    element: (
+      <LoaderSuspense>
+        <MyOwnSquadViewer />
+      </LoaderSuspense>
+    ),
   },
   {
     path: "/player-selection",
-    element: <SquadCreator />,
+    element: (
+      <LoaderSuspense>
+        <SquadCreator />
+      </LoaderSuspense>
+    ),
     children: [
       {
         path: ":teamId",
-        element: <PlayerSelection />,
+        element: (
+          <LoaderSuspense>
+            <PlayerSelection />
+          </LoaderSuspense>
+        ),
       },
     ],
   },

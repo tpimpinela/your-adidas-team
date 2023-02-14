@@ -4,6 +4,12 @@
   gap: 24px;
 }
 
+.actions {
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
+}
+
 .headings {
   margin: 2rem 0;
   display: flex;

@@ -1,5 +1,5 @@
-import { cleanup, render, RenderResult } from "@testing-library/react";
-import { useParams } from "react-router-dom";
+import { render, RenderResult } from "@testing-library/react";
+import { useNavigate, useParams } from "react-router-dom";
 import { beforeEach, describe, expect, it, Mock, vi } from "vitest";
 import PlayerSelection from ".";
 import useFetchCoaches from "../../hooks/useFetchCoaches";
@@ -13,6 +13,7 @@ import useMyOwnSquad from "../../hooks/useMyOwnSquad";
 
 vi.mock("react-router-dom", () => ({
   useParams: vi.fn(),
+  useNavigate: vi.fn(),
 }));
 vi.mock("../../hooks/useFetchCoaches", () => ({
   default: vi.fn(),
@@ -77,8 +78,11 @@ describe("<PlayerSelection />", () => {
   const deleteTeamMemberMock = useMyOwnSquadDispatcher()
     .deleteTeamMember as Mock<any, any>;
   const useMyOwnSquadMock = useMyOwnSquad as Mock<any, any>;
+  let useNavigateMock: Mock<any, any>;
 
   beforeEach(() => {
+    useNavigateMock = vi.fn();
+    (useNavigate as Mock<any, any>).mockReturnValue(useNavigateMock);
     useMyOwnSquadMock.mockReturnValue({
       validations: {},
     });
@@ -97,6 +101,11 @@ describe("<PlayerSelection />", () => {
 
   it("should match the snapshot", () => {
     expect(renderResult.container).toMatchSnapshot();
+  });
+
+  it("should navigate to root page if button is clicked", async () => {
+    await userEvent.click(renderResult.getByTestId("button-component"));
+    expect(useNavigateMock).toHaveBeenCalledWith("/");
   });
 
   it("should show team name", () => {

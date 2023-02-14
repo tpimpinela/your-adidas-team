@@ -3,6 +3,16 @@
 exports[`<PlayerSelection /> > should match the snapshot 1`] = `
 <div>
   <div
+    class="_actions_e89e23"
+  >
+    <button
+      class="_button_2a1efe"
+      data-testid="button-component"
+    >
+      See your team
+    </button>
+  </div>
+  <div
     class="_headings_e89e23"
   >
     <h2

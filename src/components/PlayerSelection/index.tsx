@@ -1,11 +1,12 @@
 import { useCallback, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetchCoaches from "../../hooks/useFetchCoaches";
 import useFetchPlayers from "../../hooks/useFetchPlayers";
 import useMyOwnSquad from "../../hooks/useMyOwnSquad";
 import useMyOwnSquadDispatcher from "../../hooks/useMyOwnSquadDispatcher";
 import { TeamMember as TeamMemberModel } from "../../models/teamMember.model";
 import { MAX_PLAYERS_PER_TEAM } from "../../utils/config";
+import Button from "../Button";
 import TeamMember from "../TeamMember";
 import styles from "./PlayerSelection.module.css";
 
@@ -17,6 +18,7 @@ const PlayerSelection = () => {
   const {
     validations: { disabledTeamIds, maxPlayers },
   } = useMyOwnSquad();
+  const navigate = useNavigate();
 
   const handleTeamMemberClick = useCallback(
     (teamMember: TeamMemberModel, isOnTheSquad: boolean) => {
@@ -29,6 +31,10 @@ const PlayerSelection = () => {
     [addTeamMember]
   );
 
+  const handleSeeYourTeam = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   const isTeamIdDisabled = useMemo(
     () => disabledTeamIds?.includes(parseInt(teamId)),
     [disabledTeamIds, teamId]
@@ -36,6 +42,9 @@ const PlayerSelection = () => {
 
   return (
     <>
+      <div className={styles.actions}>
+        <Button onClick={handleSeeYourTeam}>See your team</Button>
+      </div>
       <div className={styles.headings}>
         <h2 className={styles["headings__name"]}>{teamName}</h2>
         {(isTeamIdDisabled || maxPlayers) && (

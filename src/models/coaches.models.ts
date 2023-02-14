@@ -19,7 +19,7 @@ export interface Coach {
 export type CoachMapped = Pick<
   Coach,
   "id" | "name" | "age" | "photo" | "firstname" | "lastname"
->;
+> & { teamId: number };
 
 interface Birth {
   date: Date;

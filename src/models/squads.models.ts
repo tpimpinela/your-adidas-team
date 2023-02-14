@@ -18,7 +18,7 @@ export interface Player {
 export type PlayerMapped = Pick<
   Player,
   "id" | "name" | "number" | "position" | "photo"
->;
+> & { teamId: number };
 
 export enum PlayerPosition {
   Attacker = "Attacker",

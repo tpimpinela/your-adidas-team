@@ -20,6 +20,7 @@ const useFetchCoaches = (teamId: number) => {
         lastname,
         photo,
         age,
+        teamId,
       })
     );
   }, [data]);

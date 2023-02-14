@@ -14,6 +14,8 @@ const useFetchPlayers = (teamId: number) => {
     }
   );
 
+  const teamName = useMemo(() => data?.response[0].team.name, [data]);
+
   const mappedPlayers: PlayerMapped[] = useMemo(() => {
     return (
       data?.response[0].players.map(
@@ -23,6 +25,7 @@ const useFetchPlayers = (teamId: number) => {
           number,
           position,
           photo,
+          teamId,
         })
       ) ?? []
     );
@@ -30,7 +33,7 @@ const useFetchPlayers = (teamId: number) => {
 
   return {
     players: mappedPlayers,
-    teamName: data?.response[0].team.name,
+    teamName,
     isLoading,
   };
 };

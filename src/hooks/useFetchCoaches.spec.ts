@@ -33,7 +33,9 @@ describe("useFetchCoaches", () => {
     const { id, name, firstname, lastname, age, photo } = coachMock;
     expect(renderHookResult.result.current).toStrictEqual({
       isLoading: false,
-      coaches: [{ id, name, age, photo, firstname, lastname }],
+      coaches: [
+        { id, name, age, photo, firstname, lastname, teamId: teamIdMock },
+      ],
     });
   });
 });

@@ -1,0 +1,35 @@
+// Vitest Snapshot v1
+
+exports[`<ValidationMessage /> > there are no validation errors > should match the snapshot 1`] = `
+<div>
+  <div
+    class="_validation_34c1ba"
+  >
+    <h3
+      class="_validation__header_34c1ba"
+    >
+      Your team is ready
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`<ValidationMessage /> > there are validation errors > should match the snapshot 1`] = `
+<div>
+  <div
+    class="_validation_34c1ba"
+  >
+    <h3
+      class="_validation__header_34c1ba"
+    >
+      Your team will be ready when:
+    </h3>
+    <span
+      class="_validation__message_34c1ba"
+      data-testid="validation-message"
+    >
+      test
+    </span>
+  </div>
+</div>
+`;

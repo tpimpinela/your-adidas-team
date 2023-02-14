@@ -1,5 +1,8 @@
 import { useMemo } from "react";
-import { FootbalCoachesApiResponse } from "../models/coaches.models";
+import {
+  CoachMapped,
+  FootbalCoachesApiResponse,
+} from "../models/coaches.models";
 import { PlayerPosition } from "../models/squads.models";
 import { API_ENDPOINTS } from "../utils/config";
 import useFetch from "./useFetch";
@@ -12,9 +15,9 @@ const useFetchCoaches = (teamId: number) => {
     }
   );
 
-  const mappedCoaches = useMemo(() => {
-    return data?.response.map(
-      ({ id, name, firstname, lastname, photo, age }) => ({
+  const mappedCoaches: CoachMapped[] = useMemo(() => {
+    return (
+      data?.response.map(({ id, name, firstname, lastname, photo, age }) => ({
         id,
         name,
         firstname,
@@ -23,7 +26,7 @@ const useFetchCoaches = (teamId: number) => {
         age,
         teamId,
         position: PlayerPosition.Coach,
-      })
+      })) ?? []
     );
   }, [data]);
 

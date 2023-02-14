@@ -3,7 +3,7 @@
 exports[`<TeamMember /> > if teamMember is a coach > should match the snapshot 1`] = `
 <div>
   <div
-    class="_team-member_30838e"
+    class="_team-member_30838e _team-member--disabled_30838e"
     data-testid="team-member"
   >
     <img
@@ -32,7 +32,7 @@ exports[`<TeamMember /> > if teamMember is a coach > should match the snapshot 1
 exports[`<TeamMember /> > if teamMember is a player > should match the snapshot 1`] = `
 <div>
   <div
-    class="_team-member_30838e"
+    class="_team-member_30838e _team-member--disabled_30838e"
     data-testid="team-member"
   >
     <img

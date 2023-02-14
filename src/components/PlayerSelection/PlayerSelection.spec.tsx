@@ -9,6 +9,7 @@ import squadMock from "../../mocks/squads.mock";
 import { TeamMember } from "../../models/teamMember.model";
 import userEvent from "@testing-library/user-event";
 import useMyOwnSquadDispatcher from "../../hooks/useMyOwnSquadDispatcher";
+import useMyOwnSquad from "../../hooks/useMyOwnSquad";
 
 vi.mock("react-router-dom", () => ({
   useParams: vi.fn(),
@@ -59,6 +60,9 @@ vi.mock("../../hooks/useMyOwnSquadDispatcher", () => ({
     };
   },
 }));
+vi.mock("../../hooks/useMyOwnSquad", () => ({
+  default: vi.fn(),
+}));
 
 describe("<PlayerSelection />", () => {
   let renderResult: RenderResult;
@@ -72,8 +76,12 @@ describe("<PlayerSelection />", () => {
   >;
   const deleteTeamMemberMock = useMyOwnSquadDispatcher()
     .deleteTeamMember as Mock<any, any>;
+  const useMyOwnSquadMock = useMyOwnSquad as Mock<any, any>;
 
   beforeEach(() => {
+    useMyOwnSquadMock.mockReturnValue({
+      validations: {},
+    });
     useParamsMock.mockReturnValue(teamIdMock);
     useFetchCoachesMock.mockReturnValue({
       coaches: [coachMock],
@@ -110,6 +118,44 @@ describe("<PlayerSelection />", () => {
     it("should delete team member if is already on the squad", async () => {
       await userEvent.click(renderResult.getAllByTestId("click-true")[0]);
       expect(deleteTeamMemberMock).toHaveBeenCalled();
+    });
+  });
+
+  describe("if team is disabled or the squad has reached the maximum number of players", () => {
+    it("should show a header with a warning", () => {
+      useMyOwnSquadMock.mockReturnValue({
+        validations: {
+          maxPlayers: "test",
+        },
+      });
+      renderResult.rerender(<PlayerSelection />);
+      expect(renderResult.getByTestId("warning-header")).toBeTruthy();
+    });
+
+    it("should render correct text if the squad has reached the maximum number of players", () => {
+      useMyOwnSquadMock.mockReturnValue({
+        validations: {
+          maxPlayers: "test",
+        },
+      });
+      renderResult.rerender(<PlayerSelection />);
+      expect(renderResult.getByTestId("warning-header").textContent).toBe(
+        "You have reached the maximum number of players on your team."
+      );
+    });
+
+    it("should render correct text if the squad has reached the maximum number of players of this team", () => {
+      it("should render correct text if the squad has reached the maximum number of players", () => {
+        useMyOwnSquadMock.mockReturnValue({
+          validations: {
+            disabledTeamIds: [teamIdMock],
+          },
+        });
+        renderResult.rerender(<PlayerSelection />);
+        expect(renderResult.getByTestId("warning-header").textContent).toBe(
+          "You can't add more players from this team. Please, deselect one or check another team."
+        );
+      });
     });
   });
 });

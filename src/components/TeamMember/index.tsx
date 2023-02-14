@@ -8,9 +8,10 @@ import styles from "./TeamMember.module.css";
 interface Props {
   teamMember: PlayerMapped | CoachMapped;
   onTeamMemberClicked?: (teamMember: TeamMember, isOnTheSquad: boolean) => void;
+  disabled?: boolean;
 }
 
-const TeamMember = ({ teamMember, onTeamMemberClicked }: Props) => {
+const TeamMember = ({ teamMember, onTeamMemberClicked, disabled }: Props) => {
   const { isMemberOnMySquad: isMemberOnMySquadFn } = useMyOwnSquad();
 
   const isMemberOnMySquad = useMemo(
@@ -21,7 +22,11 @@ const TeamMember = ({ teamMember, onTeamMemberClicked }: Props) => {
   return (
     <div
       onClick={() => onTeamMemberClicked?.(teamMember, isMemberOnMySquad)}
-      className={`${styles["team-member"]}`}
+      className={`${styles["team-member"]} ${
+        (!disabled && onTeamMemberClicked) || isMemberOnMySquad
+          ? `${styles["team-member--clicable"]}`
+          : `${styles["team-member--disabled"]}`
+      }`}
       data-testid="team-member"
     >
       <img

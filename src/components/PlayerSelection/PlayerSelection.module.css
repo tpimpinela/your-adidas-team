@@ -4,9 +4,26 @@
   gap: 24px;
 }
 
-.team-name {
-  display: grid;
-  place-items: center;
-  color: white;
-  margin-bottom: 2rem;
+.headings {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 3.3rem;
+
+  & .headings__name,
+  & .headings__warning {
+    margin: 0;
+  }
+
+  & .headings__name {
+    color: white;
+  }
+
+  & .headings__warning {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+  }
 }

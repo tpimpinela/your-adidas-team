@@ -2,11 +2,15 @@
 
 exports[`<PlayerSelection /> > should match the snapshot 1`] = `
 <div>
-  <h2
-    class="_team-name_e89e23"
+  <div
+    class="_headings_e89e23"
   >
-    Spain
-  </h2>
+    <h2
+      class="_headings__name_e89e23"
+    >
+      Spain
+    </h2>
+  </div>
   <div
     class="_player-selection-container_e89e23"
   >

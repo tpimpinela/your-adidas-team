@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`<MyOwnSquadViewer /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="_squad_e50473"
+  >
+    <button
+      data-testid="team-member"
+    >
+      Click me
+    </button>
+  </div>
+  <div
+    class="_actions_e50473"
+  >
+    <button
+      class="_button_2a1efe"
+      data-testid="button-component"
+    >
+      Select players
+    </button>
+  </div>
+</div>
+`;

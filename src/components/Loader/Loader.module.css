@@ -1,0 +1,32 @@
+.loader-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2;
+
+  .loader {
+    border: 16px solid var(--light-grey-color);
+    border-top-color: var(--accent-color);
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    border-radius: 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

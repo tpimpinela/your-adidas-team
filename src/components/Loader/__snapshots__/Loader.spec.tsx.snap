@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`<Loader /> > should match the snapshot 1`] = `
+<div>
+  <div
+    class="_loader-container_bf668d"
+  >
+    <div
+      class="_loader_bf668d"
+    />
+    <span>
+      Loading...
+    </span>
+  </div>
+</div>
+`;

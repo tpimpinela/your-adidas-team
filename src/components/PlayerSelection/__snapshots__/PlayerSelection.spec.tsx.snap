@@ -3,7 +3,7 @@
 exports[`<PlayerSelection /> > should match the snapshot 1`] = `
 <div>
   <div
-    class="_actions_e89e23"
+    class="_actions_e89e23 false"
   >
     <button
       class="_button_2a1efe"

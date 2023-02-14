@@ -11,6 +11,10 @@
   place-items: center;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .headings {
   margin: 2rem 0;
   display: flex;

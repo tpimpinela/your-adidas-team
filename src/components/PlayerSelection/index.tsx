@@ -17,6 +17,7 @@ const PlayerSelection = () => {
   const { addTeamMember, deleteTeamMember } = useMyOwnSquadDispatcher();
   const {
     validations: { disabledTeamIds, maxPlayers },
+    squad,
   } = useMyOwnSquad();
   const navigate = useNavigate();
 
@@ -42,7 +43,9 @@ const PlayerSelection = () => {
 
   return (
     <>
-      <div className={styles.actions}>
+      <div
+        className={`${styles.actions} ${squad?.length === 0 && styles.hidden}`}
+      >
         <Button onClick={handleSeeYourTeam}>See your team</Button>
       </div>
       <div className={styles.headings}>

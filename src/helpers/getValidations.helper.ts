@@ -25,14 +25,14 @@ const getValidations = (
   if (squad.length > MAX_SQUAD_PLAYERS) {
     validationsObj[
       "maxPlayers"
-    ] = `The team can only have up to ${MAX_SQUAD_PLAYERS} players`;
+    ] = `The team has less than ${MAX_SQUAD_PLAYERS} players`;
   }
   let squadComposition = "";
   Object.entries(MIN_SQUAD_POSITIONS).forEach(([position, minValue]) => {
     if (membersPerPosition[position] >= minValue) return;
     squadComposition += `${
-      squadComposition ? "\n." : ""
-    }The team should have at least ${minValue} ${position}`;
+      squadComposition ? "\n" : ""
+    }The team has at least ${minValue} ${position}`;
   });
   if (squadComposition) {
     validationsObj["squadComposition"] = squadComposition;

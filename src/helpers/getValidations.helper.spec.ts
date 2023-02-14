@@ -19,7 +19,7 @@ describe("getValidations helper", () => {
     }) as TeamMember[];
     const result = getValidations(squadMock, {}, {});
     expect(result).toContain({
-      maxPlayers: `The team can only have up to ${MAX_SQUAD_PLAYERS} players`,
+      maxPlayers: `The team has less than ${MAX_SQUAD_PLAYERS} players`,
     });
   });
 

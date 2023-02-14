@@ -31,6 +31,15 @@ const router = createBrowserRouter([
           </LoaderSuspense>
         ),
       },
+      {
+        path: "",
+        index: true,
+        element: (
+          <h3 style={{ textAlign: "center" }}>
+            Select one team to see its members.
+          </h3>
+        ),
+      },
     ],
   },
 ]);

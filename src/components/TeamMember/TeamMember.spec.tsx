@@ -1,17 +1,28 @@
 import { cleanup, render, RenderResult } from "@testing-library/react";
-import { beforeEach, describe, expect, it, Mocked, vi } from "vitest";
+import { beforeEach, describe, expect, it, Mock, Mocked, vi } from "vitest";
 import TeamMember from ".";
 import coachMock from "../../mocks/coach.mock";
 import squadMock from "../../mocks/squads.mock";
 import userEvent from "@testing-library/user-event";
 import { PlayerMapped, PlayerPosition } from "../../models/squads.models";
+import useMyOwnSquad from "../../hooks/useMyOwnSquad";
+
+vi.mock("../../hooks/useMyOwnSquad", () => ({
+  default: vi.fn(),
+}));
 
 describe("<TeamMember />", () => {
   let renderResult: RenderResult;
   const playerMock = squadMock.players[0] as unknown as PlayerMapped;
   let onTeamMemberClickedMock: Mocked<any>;
+  const useMyOwnSquadMock = useMyOwnSquad as Mock<any, any>;
+  const isMemberOnMySquadMock = vi.fn();
 
   beforeEach(() => {
+    useMyOwnSquadMock.mockReturnValue({
+      isMemberOnMySquad: isMemberOnMySquadMock,
+    });
+    isMemberOnMySquadMock.mockReturnValue(false);
     onTeamMemberClickedMock = vi.fn();
     renderResult = render(
       <TeamMember
@@ -76,5 +87,21 @@ describe("<TeamMember />", () => {
       playerMock,
       false
     );
+  });
+
+  describe("marks", () => {
+    it("should show delete mark", () => {
+      renderResult.rerender(
+        <TeamMember teamMember={playerMock} showDeleteMark />
+      );
+      expect(renderResult.getByTestId("delete-mark")).toBeTruthy();
+    });
+
+    it("should not show the delete mark if prop is falsy", () => {
+      renderResult.rerender(
+        <TeamMember teamMember={playerMock} showDeleteMark={false} />
+      );
+      expect(renderResult.queryByTestId("delete-mark")).toBeFalsy();
+    });
   });
 });

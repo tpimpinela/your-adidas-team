@@ -17,17 +17,31 @@
     opacity: 0.9;
   }
 
-  & .included-mark {
+  & .mark {
     position: absolute;
     top: 0;
     right: 0;
     transform: translateX(20%) translateY(-20%);
-    font-size: 1.5rem;
-    padding: 0.2rem;
     border-radius: 2px;
-    background-color: var(--accent-color);
-    color: white;
+
+    &.mark--included {
+      background-color: var(--accent-color);
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.2rem;
+    }
+
+    &.mark--delete {
+      background-color: var(--red-color);
+      height: 28px;
+      width: 28px;
+      display: grid;
+      place-items: center;
+      text-transform: uppercase;
+      transform: translateX(35%) translateY(-35%);
+    }
   }
+
   & .team-member__image {
     border-radius: 15px 15px 0 0;
     width: 100%;

@@ -9,9 +9,17 @@ interface Props {
   teamMember: PlayerMapped | CoachMapped;
   onTeamMemberClicked?: (teamMember: TeamMember, isOnTheSquad: boolean) => void;
   disabled?: boolean;
+  hideIncludedMark?: boolean;
+  showDeleteMark?: boolean;
 }
 
-const TeamMember = ({ teamMember, onTeamMemberClicked, disabled }: Props) => {
+const TeamMember = ({
+  teamMember,
+  onTeamMemberClicked,
+  disabled,
+  hideIncludedMark,
+  showDeleteMark,
+}: Props) => {
   const { isMemberOnMySquad: isMemberOnMySquadFn } = useMyOwnSquad();
 
   const isMemberOnMySquad = useMemo(
@@ -38,7 +46,22 @@ const TeamMember = ({ teamMember, onTeamMemberClicked, disabled }: Props) => {
         <span className={styles.name}>{teamMember.name}</span>
         <span className={styles.position}>{teamMember.position}</span>
       </div>
-      {isMemberOnMySquad && <span className={styles["included-mark"]}>✓</span>}
+      {!hideIncludedMark && isMemberOnMySquad && (
+        <span
+          data-testid="included-mark"
+          className={`${styles.mark} ${styles["mark--included"]}`}
+        >
+          ✓
+        </span>
+      )}
+      {showDeleteMark && (
+        <span
+          data-testid="delete-mark"
+          className={`${styles.mark} ${styles["mark--delete"]}`}
+        >
+          X
+        </span>
+      )}
     </div>
   );
 };

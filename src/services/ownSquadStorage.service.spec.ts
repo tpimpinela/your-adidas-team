@@ -1,5 +1,6 @@
 import { beforeEach, describe, vi, it, expect } from "vitest";
 import squadMock from "../mocks/squads.mock";
+import { TeamMember } from "../models/teamMember.model";
 import {
   getOwnSquadFromStorage,
   ownSquadLocalStorageKey,
@@ -8,7 +9,7 @@ import {
 
 describe("ownSquadStorageService", () => {
   let localStorageMock: { [key: string]: any };
-  const savedSquadMock = [squadMock.players[0]];
+  const savedSquadMock = [squadMock.players[0]] as unknown as TeamMember[];
 
   beforeEach(() => {
     localStorageMock = {};

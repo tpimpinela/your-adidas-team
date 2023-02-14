@@ -2,6 +2,7 @@ import { renderHook, RenderHookResult } from "@testing-library/react";
 import { useContext } from "react";
 import { beforeEach, describe, Mock, vi, it, expect } from "vitest";
 import squadMock from "../mocks/squads.mock";
+import { TeamMember } from "../models/teamMember.model";
 import { MyOwnSquadActionType } from "../reducers/myOwnSquad.reducer";
 import useMyOwnSquadDispatcher from "./useMyOwnSquadDispatcher";
 
@@ -36,7 +37,7 @@ describe("useMyOwnSquadDispatcher", () => {
 
   it("should add team member", () => {
     const { addTeamMember } = renderHookResult.result.current;
-    addTeamMember(squadMock.players[0]);
+    addTeamMember(squadMock.players[0] as unknown as TeamMember);
     expect(dispatchMock).toHaveBeenNthCalledWith(1, {
       type: MyOwnSquadActionType.Add,
       payload: squadMock.players[0],

@@ -25,7 +25,10 @@ describe("myOwnSquadReducer", () => {
       type: MyOwnSquadActionType.Delete,
       payload: squadMock.players[0].id,
     };
-    const result = myOwnSquadReducer([squadMock.players[0]], action);
+    const result = myOwnSquadReducer(
+      [squadMock.players[0] as unknown as TeamMember],
+      action
+    );
     expect(result.length).toBe(0);
   });
 

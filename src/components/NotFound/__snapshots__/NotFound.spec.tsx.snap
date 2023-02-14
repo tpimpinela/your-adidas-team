@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`<NotFound /> > should match the snapshot 1`] = `
+<div>
+  <h2>
+    The specified route does not exist.
+  </h2>
+  <button
+    class="_button_2a1efe"
+    data-testid="button-component"
+  >
+    Go to the homepage
+  </button>
+</div>
+`;

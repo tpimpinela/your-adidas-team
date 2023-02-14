@@ -5,6 +5,7 @@ import LoaderSuspense from "./components/LoaderSuspense";
 const MyOwnSquadViewer = lazy(() => import("./components/MyOwnSquadViewer"));
 const SquadCreator = lazy(() => import("./components/SquadCreator"));
 const PlayerSelection = lazy(() => import("./components/PlayerSelection"));
+const NotFound = lazy(() => import("./components/NotFound"));
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,11 @@ const router = createBrowserRouter([
     element: (
       <LoaderSuspense>
         <MyOwnSquadViewer />
+      </LoaderSuspense>
+    ),
+    errorElement: (
+      <LoaderSuspense>
+        <NotFound />
       </LoaderSuspense>
     ),
   },

@@ -22,7 +22,9 @@
 
 1. Clone the repository
 2. Install the packages (with npm install, for example)
-3. Run the development server with the "dev" command (with npm run dev, for example)
+3. Get an API key for <a href="https://rapidapi.com/api-sports/api/api-football/" target="_blank">this API</a>.
+4. In the root of the repository create a .env file an put your API key as the value of the VITE_API_KEY environment variable (you can have a look at sample.env)
+5. Run the development server with the "dev" command (with npm run dev, for example)
 
 # Available commands
 

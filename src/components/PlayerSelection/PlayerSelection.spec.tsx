@@ -104,7 +104,7 @@ describe("<PlayerSelection />", () => {
   });
 
   it("should navigate to root page if button is clicked", async () => {
-    await userEvent.click(renderResult.getByTestId("button-component"));
+    await userEvent.click(renderResult.getAllByTestId("button-component")[0]);
     expect(useNavigateMock).toHaveBeenCalledWith("/");
   });
 

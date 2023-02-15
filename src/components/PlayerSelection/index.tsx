@@ -5,8 +5,8 @@ import useFetchPlayers from "../../hooks/useFetchPlayers";
 import useMyOwnSquad from "../../hooks/useMyOwnSquad";
 import useMyOwnSquadDispatcher from "../../hooks/useMyOwnSquadDispatcher";
 import { TeamMember as TeamMemberModel } from "../../models/teamMember.model";
-import { MAX_PLAYERS_PER_TEAM } from "../../utils/config";
 import Button from "../Button";
+import ScrollIndicator from "../ScrollIndicator";
 import TeamMember from "../TeamMember";
 import styles from "./PlayerSelection.module.css";
 
@@ -72,6 +72,7 @@ const PlayerSelection = () => {
           />
         ))}
       </div>
+      <ScrollIndicator />
     </>
   );
 };

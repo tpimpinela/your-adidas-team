@@ -1,0 +1,27 @@
+.scroll-indicator {
+  position: fixed;
+  left: 0;
+  bottom: 15%;
+  margin-left: 0.5rem;
+  border-radius: 6px;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.4s, opacity 0.4s;
+
+  &.scroll-indicator--shown {
+    transform: unset;
+    opacity: 1;
+  }
+
+  & button {
+    font-size: 1rem;
+    padding: 0;
+    width: 42px;
+    height: 42px;
+  }
+
+  & .scroll-indicator__icon {
+    display: block;
+    transform: rotate(90deg);
+  }
+}

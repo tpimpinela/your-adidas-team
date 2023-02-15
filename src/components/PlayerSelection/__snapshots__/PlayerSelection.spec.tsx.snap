@@ -55,5 +55,20 @@ exports[`<PlayerSelection /> > should match the snapshot 1`] = `
       Click me
     </button>
   </div>
+  <div
+    class="_scroll-indicator_c19ed3 false"
+    data-testid="scroll-indicator"
+  >
+    <button
+      class="_button_2a1efe"
+      data-testid="button-component"
+    >
+      <span
+        class="_scroll-indicator__icon_c19ed3"
+      >
+        «
+      </span>
+    </button>
+  </div>
 </div>
 `;

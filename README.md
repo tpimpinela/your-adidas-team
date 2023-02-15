@@ -38,3 +38,5 @@
 
 - Handle HTTP errors inside useFetch custom hook and show a modal/page to the user about the error.
 - Handle application errors with a React Error Boundary.
+- Add filters to player selection (by position, for example).
+- Show a toast to the user everytime the validations are updated (for example: you need only one more attacker to complete your team).

@@ -2,7 +2,7 @@
 
 # About the application
 
-"Your adidas team" is a React application where a user can create their own footbal team selecting players from the different national teams of the 2022 football world cup. The app is deployed [here](https://tpimpinela-your-adidas-team.netlify.app/).
+"Your adidas team" is a React application where a user can create their own footbal team selecting players from the different national teams of the 2022 football world cup. The app is deployed <a href="https://tpimpinela-your-adidas-team.netlify.app/" target="_blank">here</a>.
 
 # About the code
 

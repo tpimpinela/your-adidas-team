@@ -1,14 +1,4 @@
-<style>
-    .deployment-img {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 1rem;
-    }
-</style>
-
-<div class="deployment-img">
-    <img src="https://github.com/tpimpinela/your-adidas-team/actions/workflows/pipeline.yml/badge.svg" alt="Deployment status"/>
-</div>
+![Deployment status](https://github.com/tpimpinela/your-adidas-team/actions/workflows/pipeline.yml/badge.svg "Deployment status")
 
 # About the application
 

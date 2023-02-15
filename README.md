@@ -1,15 +1,30 @@
+<style>
+    .deployment-img {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+    }
+</style>
+
+<div class="deployment-img">
+    <img src="https://github.com/tpimpinela/your-adidas-team/actions/workflows/pipeline.yml/badge.svg" alt="Deployment status"/>
+</div>
+
 # About the application
 
-"Your adidas team" is React application where a user can create their own footbal team selecting players from the different national teams of the 2022 football world cup. The app is deployed [https://tpimpinela-your-adidas-team.netlify.app/](here).
+"Your adidas team" is a React application where a user can create their own footbal team selecting players from the different national teams of the 2022 football world cup. The app is deployed [here](https://tpimpinela-your-adidas-team.netlify.app/).
 
-# About the code used
+# About the code
 
-- React is used as the core framework to build the UI.
+- React + TypeScript + SWC is used as the core framework to build the UI.
 - React router is used for the management of the routes.
 - React Context API is used for sharing the created football team and the loading state across the whole application.
+- LocalStorage is used for caching the HTTP requests and persisting the team information.
+- React.Lazy and React.Suspense are used for lazy loading the components and increasing the application performance.
 - Custom hooks, helpers and services are used to isolate the application logic.
 - Vite is the build tool of the project.
 - Vitest is used for the unit test.
+- ESLint is used for finding and fixing code problems.
 - Github Actions are used for the CI/CD (you can have a look at pipeline.yml)
 - Netlify is used for hosting the application.
 
